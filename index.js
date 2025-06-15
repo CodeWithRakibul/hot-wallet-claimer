@@ -127,10 +127,8 @@ async function processAccount(account, index) {
             const claimFiveHotButton = page.locator('button:has-text("Claim")');
 
             try {
-                await page.waitForSelector('button:has-text("Claim")', { timeout: 30000 });
-
                 if (
-                    (await claimFiveHotButton.isVisible()) &&
+                    (await claimFiveHotButton.isVisible({ timeout: 10000 })) &&
                     !(await claimFiveHotButton.isDisabled())
                 ) {
                     await claimFiveHotButton.click();
